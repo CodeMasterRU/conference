@@ -63,4 +63,19 @@ class EventsRepository extends ServiceEntityRepository
 //            ->getOneOrNullResult()
 //        ;
 //    }
+public function findAllEvents()
+{
+    return $this->findBy(array(), array('nom' => 'ASC'));
+}
+
+public function getEventsByName($saisie) 
+{
+    return $this->createQueryBuilder('a')
+                ->andWhere('a.nom LIKE :val')
+                ->setParameter('val', "%$saisie%")
+                ->orderBy('a.nom', 'ASC')
+                ->getQuery()
+                ->getResult();
+
+}
 }

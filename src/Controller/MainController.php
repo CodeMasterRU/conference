@@ -4,6 +4,8 @@ namespace App\Controller;
 
 use App\Entity\Events;
 use App\Form\EventsType;
+use App\Form\RechercheEventsType;
+use App\Form\RechercheProduitType;
 use App\Repository\EventsRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Request;
@@ -14,13 +16,21 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 class MainController extends AbstractController
 {
     #[Route('/events', name: 'app_main')]
-    public function index(EventsRepository $repo): Response
+    public function index(EventsRepository $repo, Request $request): Response
     {
-        $events = $repo->findAll();
+        $form = $this->createForm(RechercheEventsType::class);
+        $form->handleRequest($request);
 
+        if ($form->isSubmitted() && $form->isValid()) {
+            $data = $form->get('recherche')->getData();
+            $events = $repo->getEventsByName($data);
+        } else {
+            $events = $repo->findAllEvents();
+        }
 
         return $this->render('main/index.html.twig', [
-            'events' => $events
+            'events' => $events,
+            'recherche' => $form->createView(),
         ]);
     }
     #[Route('/events/show', name: 'app_show')]
@@ -44,6 +54,7 @@ class MainController extends AbstractController
         if (!$events) {
             $events = new Events;
             $events->setUser($this->getUser());
+            $events->setUpdatedAt(new \DateTime());
         }
 
         $form = $this->createForm(EventsType::class, $events);

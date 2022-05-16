@@ -3,9 +3,13 @@
 namespace App\Form;
 
 use App\Entity\Events;
+use App\Entity\Category;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
+use Symfony\Component\Form\Extension\Core\Type\FileType;
+
 class EventsType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options): void
@@ -15,8 +19,7 @@ class EventsType extends AbstractType
             ->add('description')
             ->add('image', FileType::class, ['required' => false])
             ->add('category', EntityType::class, [
-                'class' => Categorie::class,
-                'choice_label' => 'titre'
+                'class' => Category::class,
             ])
         ;
     }
