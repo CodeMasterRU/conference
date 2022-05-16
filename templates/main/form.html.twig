@@ -5,13 +5,13 @@
     {{ form_row(formEvents.nom, {
     'label': "Titre",
     'attr': {
-        'placeholder': "Nom du produit"
+        'placeholder': "Nom de l'évènement"
     }
 })}}
     {{ form_row(formEvents.description, {
     'label': "Contenu",
     'attr': {
-        'placeholder': "Description du produit"
+        'placeholder': "Description de l'évènement"
     }
 })}}
     {{ form_row(formEvents.imageFile)}}
@@ -22,7 +22,7 @@
         label: "Catégorie"
     })}}
     <button type="submit" class="btn btn-primary">
-        <h3>Ajouter l'article</h3>
+        <h3>Ajouter l'évènement</h3>
     </button>
     {{ form_end(formEvents) }}
 {# form() permet d'afficher un formulaire #}
