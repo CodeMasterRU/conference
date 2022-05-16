@@ -17,7 +17,7 @@ class EventsType extends AbstractType
         $builder
             ->add('nom')
             ->add('description')
-            ->add('image', FileType::class, ['required' => false])
+            ->add('imageFile', FileType::class, ['required' => false])
             ->add('category', EntityType::class, [
                 'class' => Category::class,
             ])
