@@ -43,7 +43,7 @@
 								<a class="nav-link active" aria-current="page" href="#">Interface Utilisateur</a>
 							</li>
 							<li class="nav-item">
-								<a class="nav-link active" aria-current="page" href="#">Liste des événements</a>
+								<a class="nav-link active" aria-current="page" href="/events">Liste des événements</a>
 							</li>
 							<li class="nav-item">
 								<a class="nav-link active" aria-current="page" href="/events/new">Créer un nouvel évènement</a>
@@ -119,10 +119,11 @@
 
 			{% endif %}
 			<!-- Marketing messaging and featurettes
-						  ================================================== -->
+												  ================================================== -->
 			<!-- Wrap the rest of the page in another container to center all the content. -->
 
-			<div class="container marketing {% if block('carousel') is not defined %}mt-5{% endif %}">
+			<div
+				class="container marketing {% if block('carousel') is not defined %}mt-5{% endif %}">
 
 				<!-- Three columns of text below the carousel -->
 				{% block content %}{% endblock %}

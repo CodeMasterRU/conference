@@ -1,4 +1,17 @@
 {% extends "base.html.twig" %}
-{% block nom %}
-<h1>L</h1>
+
+{% block content %}
+
+	<section class="row article">
+		<article class="col-md-6 mx-auto text-center border border-dark mb-3 p-3 mt-3 mr-1">
+			<h2>{{ events.nom }}
+			</h2>
+			<div class="Description">
+				<img src="{{ asset('images/events/' ~ events.image) }}" alt="" class="img-fluid">
+			</img>
+			<div class="text-center">
+				{{ events.description|raw }}
+			</div>
+		</article>
+	</section>
 {% endblock %}

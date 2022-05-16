@@ -1,6 +1,13 @@
 {% extends 'base.html.twig' %}
 {% block content %}
     <h1>Inscription</h1>
-   {{ form(form) }} 
+   {{ form(form) }}
+   <br>
+        <center><text>Vous avez déja un compte ?</text>
+        <a href="{{ path('app_login')}}"class=""> Cliquez ici </a>
+        </center>
+    </div> 
+   <div class="text-center">
+   <br>
 {% endblock %}
 

@@ -33,12 +33,14 @@ class MainController extends AbstractController
             'recherche' => $form->createView(),
         ]);
     }
-    #[Route('/events/show', name: 'app_show')]
-    public function show(): Response
+    #[Route('/events/show/{id}', name: 'app_show')]
+    public function show(Events $events): Response
     {
 
        /* $comment->setProduit($this->$produit->getId());*/
-        return $this->render('main/show.html.twig');
+        return $this->render('main/show.html.twig', [
+            'events' => $events
+        ]);
     }
     #[Route('/events/new', name: 'app_newEvents')]
     public function form(Request $request, EntityManagerInterface $manager, Events $events = null)
