@@ -1,0 +1,32 @@
+{% extends "base.html.twig" %}
+
+{% block body %}
+    {{ form_start(formEvents) }}
+
+    {{ form_row(formEvents.nom, {
+    'label': "Titre",
+    'attr': {
+        'placeholder': "Nom du produit"
+    }
+})}}
+    {{ form_row(formEvents.description, {
+    'label': "Contenu",
+    'attr': {
+        'placeholder': "Description du produit"
+    }
+})}}
+    {{ form_row(formEvents.image)}}
+    {# form_widget permet de gérer un champ d'un formulaire #}
+    {# form_row permet de gérer un champ d'un formulaire et son label #}
+
+    {{ form_row(formEvents.category, {
+        label: "Catégorie"
+    })}}
+    <button type="submit" class="btn btn-primary">
+        <h3>Ajouter l'article</h3>
+    </button>
+    {{ form_end(formEvents) }}
+{# form() permet d'afficher un formulaire #}
+    {# symfony est capable de décider quel type de champ afficher en fonction du type de la propriété #}
+
+{% endblock %}
