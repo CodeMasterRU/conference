@@ -51,6 +51,11 @@
 								<a class="nav-link active" aria-current="page" href="/events/new">Créer un nouvel évènement</a>
 							</li>
 							{% endif %}
+							{% if is_granted("ROLE_ADMIN") == true %}
+							<li class="nav-item">
+								<a class="nav-link active" aria-current="page" href="/admin">Bureau Admin</a>
+								{% endif %}
+							</li>
 						</ul>
 						<div class="navbar-item-custom">
 							{% if app.user %}
