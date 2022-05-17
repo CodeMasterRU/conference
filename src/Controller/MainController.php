@@ -45,9 +45,9 @@ class MainController extends AbstractController
     #[Route('/events/new', name: 'app_newEvents')]
     public function form(Request $request, EntityManagerInterface $manager, Events $events = null)
     {
-        //if ($this->isGranted('IS_AUTHENTICATED_REMEMBERED') == false) {
-         //   return $this->redirectToRoute('app_login');
-       // }
+        if ($this->isGranted('ROLE_ORGANISATEUR') == false) {
+           return $this->redirectToRoute('app_main');
+        }
         // if ($produit->setUser($this->getUser()) != $this->isGranted('user.id'))
         // {
         //     return $this->redirectToRoute('app_ecommerce');
