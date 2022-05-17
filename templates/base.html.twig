@@ -27,6 +27,7 @@
 		</style>
 		<link
 		href="{{asset('assets/css/carousel.css')}}" rel="stylesheet">
+		<link rel="stylesheet" href="{{asset('assets/css/conference.css')}}">
 	<!-- Custom styles for this template -->
 	</head>
 	<body>
@@ -49,10 +50,19 @@
 								<a class="nav-link active" aria-current="page" href="/events/new">Créer un nouvel évènement</a>
 							</li>
 						</ul>
-						<form class="d-flex" role="search">
+						<div class="navbar-item-custom">
+							{% if app.user %}
+								<a href="{{path('app_logout')}}">Deconnexion</a>
+							{% else %}
+								<a href="{{ path('app_login') }}">Connexion</a>
+								|
+								<a href="{{ path('app_register') }}">Inscription</a>
+							{% endif %}
+						</div>
+						{# <form class="d-flex" role="search">
 							<input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
 							<button class="btn btn-outline-success" type="submit">Search</button>
-						</form>
+						</form> #}
 					</div>
 				</div>
 			</nav>
@@ -119,7 +129,7 @@
 
 			{% endif %}
 			<!-- Marketing messaging and featurettes
-												  ================================================== -->
+															  ================================================== -->
 			<!-- Wrap the rest of the page in another container to center all the content. -->
 
 			<div
